@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_view_18/screens/BrowserScreen.dart';
+import 'package:web_view_18/screens/browser_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BrowserScreen(),
+      home: const BrowserScreen(),
     );
   }
 }
