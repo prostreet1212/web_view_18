@@ -7,22 +7,23 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('History'),
       ),
       body: ListView.separated(
-
-          itemCount: history!.list!.length,
-          itemBuilder: (context, i) {
-            return  ListTile(
-              title: Text(history!.list![i].title.toString()),
-              subtitle: Text(history!.list![i].url.toString()),
-            );
-          }, separatorBuilder: (BuildContext context, int index) {
-            return  const Divider( thickness: 5,);
-      },
+        itemCount: history!.list!.length,
+        itemBuilder: (context, i) {
+          return ListTile(
+            title: Text(history!.list![i].title.toString()),
+            subtitle: Text(history!.list![i].url.toString()),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            thickness: 5,
+          );
+        },
       ),
     );
   }

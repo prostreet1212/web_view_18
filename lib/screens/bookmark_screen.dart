@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../model/bookmark.dart';
 
 class BookmarkScreen extends StatelessWidget {
-   const BookmarkScreen({Key? key,required this.bookmarks}) : super(key: key);
+  const BookmarkScreen({Key? key, required this.bookmarks}) : super(key: key);
   final List<Bookmark> bookmarks;
 
   @override
@@ -18,16 +17,18 @@ class BookmarkScreen extends StatelessWidget {
           return ListTile(
             leading: Image.network(
               '${bookmarks[i].icon!.url}',
-            height: 35,),
+              height: 35,
+            ),
             title: Text(bookmarks[i].title.toString()),
             subtitle: Text(bookmarks[i].url.toString()),
           );
         },
         separatorBuilder: (BuildContext context, int index) {
-          return const Divider(thickness: 5,);
+          return const Divider(
+            thickness: 5,
+          );
         },
       ),
-          );
-
+    );
   }
 }
