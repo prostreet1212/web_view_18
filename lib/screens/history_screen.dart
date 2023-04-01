@@ -11,12 +11,12 @@ class HistoryScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('History'),
       ),
-      body: ListView.separated(
+      body:  ListView.separated(
         itemCount: history!.list!.length,
         itemBuilder: (context, i) {
-          return ListTile(
+          return  ListTile(
             title: Text(history!.list![i].title.toString()),
-            subtitle: Text(history!.list![i].url.toString()),
+            subtitle:  Text(history!.list![i].url.toString()),
           );
         },
         separatorBuilder: (BuildContext context, int index) {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:web_view_18/model/bookmark.dart';
 import 'package:web_view_18/widgets/browser_appbar.dart';
+
+import '../model/bookmark.dart';
 
 class BrowserScreen extends StatefulWidget {
   const BrowserScreen({Key? key}) : super(key: key);
@@ -11,21 +12,21 @@ class BrowserScreen extends StatefulWidget {
 }
 
 class _BrowserScreenState extends State<BrowserScreen> {
-  TextEditingController urlTextController = TextEditingController();
-  String? title = '';
+  final TextEditingController urlTextController = TextEditingController();
+  final String? title = '';
   Favicon? icon;
-  InAppWebViewController? webViewController;
-  bool pageIsLoaded = false;
+   InAppWebViewController? webViewController;
+   bool pageIsLoaded = false;
 
   double progress = 0;
-
-  void customSetState() {
+/*
+   void customSetState() {
     setState(() {});
   }
+*/
+  final List<Bookmark> bookmarkList = [];
 
-  List<Bookmark> bookmarkList = [];
-
-  InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
+  final InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
       crossPlatform: InAppWebViewOptions(
           useShouldOverrideUrlLoading: true,
           mediaPlaybackRequiresUserGesture: false,
@@ -37,6 +38,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
       ios: IOSInAppWebViewOptions(
         allowsInlineMediaPlayback: true,
       ));
+
 
   @override
   void initState() {
@@ -55,7 +57,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
             bookmarkList: bookmarkList,
             urlTextController: urlTextController,
             pageIsLoaded: pageIsLoaded,
-            customSetState: customSetState,
+            //customSetState: customSetState,
           ),
         ),
         body: Column(
