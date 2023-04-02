@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import '../model/bookmark.dart';
@@ -14,21 +12,20 @@ class BrowserAppBar extends StatelessWidget {
    BrowserAppBar(
       {Key? key,
         required this.webViewController,
-        required this.bookmarkList,
+        //required this.bookmarkList,
         required this.urlTextController,
         required this.pageIsLoaded,
-        //required this.customSetState
+        required this.customSetState
       })
       : super(key: key);
 
   final InAppWebViewController? webViewController;
-  List<Bookmark> bookmarkList;
+  //List<Bookmark> bookmarkList;
   final TextEditingController urlTextController;
   final bool pageIsLoaded;
-  //final Function customSetState;
+  final Function customSetState;
 
-  //List<Bookmark> bookmarkList = [];
-
+  List<Bookmark> bookmarkList = [];
   StreamController<List<Bookmark>> bookmarkStream =
   StreamController<List<Bookmark>>.broadcast();
 
@@ -92,12 +89,12 @@ class BrowserAppBar extends StatelessWidget {
             builder: (context, AsyncSnapshot<List> snapshot) {
               return StreamBuilder<List<Bookmark>>(
                 stream: bookmarkStream.stream,
-                  initialData: [],
+                  //initialData: [],
                   builder: (context,snap){
                     print('REBUILD');
-                  List<Bookmark> books=snap.data??[];
+                    bookmarkList=snap.data??[];
                   return IconButton(
-                    icon: Icon(books.firstWhereOrNull(
+                    icon: Icon(bookmarkList.firstWhereOrNull(
                             (val) => val.url == urlTextController.text) !=
                         null
                         ? Icons.star
@@ -108,19 +105,19 @@ class BrowserAppBar extends StatelessWidget {
                       List<Favicon> icon1 =
                           snapshot.data?[1] ?? [Favicon(url: Uri.parse(''))];
                       if (urlTextController.text.isNotEmpty) {
-                        if (books.firstWhereOrNull(
+                        if (bookmarkList.firstWhereOrNull(
                                 (val) => val.url == urlTextController.text) !=
                             null) {
-                          books.removeWhere((element) =>
+                          bookmarkList.removeWhere((element) =>
                           element.url == urlTextController.text);
                         } else {
                           String url = urlTextController.text;
-                          books.add(Bookmark(title1, url, icon1[0]));
+                          bookmarkList.add(Bookmark(title1, url, icon1[0]));
                         }
                         //customSetState();
-                        bookmarkList=books;
+                        //bookmarkList=books;
                         bookmarkStream.sink.add(bookmarkList);
-                        bookmarkStream.done;
+                        //customSetState();
                       }
                     }
                         : null,

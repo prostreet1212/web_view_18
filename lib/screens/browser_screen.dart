@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:web_view_18/widgets/browser_appbar.dart';
 
-import '../model/bookmark.dart';
+
 
 class BrowserScreen extends StatefulWidget {
   const BrowserScreen({Key? key}) : super(key: key);
@@ -19,12 +19,12 @@ class _BrowserScreenState extends State<BrowserScreen> {
    bool pageIsLoaded = false;
 
   double progress = 0;
-/*
+
    void customSetState() {
     setState(() {});
   }
-*/
-  final List<Bookmark> bookmarkList = [];
+
+  //final List<Bookmark> bookmarkList = [];
 
   final InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
       crossPlatform: InAppWebViewOptions(
@@ -54,10 +54,10 @@ class _BrowserScreenState extends State<BrowserScreen> {
           preferredSize: const Size(double.infinity, 60),
           child: BrowserAppBar(
             webViewController: webViewController,
-            bookmarkList: bookmarkList,
+            //bookmarkList: bookmarkList,
             urlTextController: urlTextController,
             pageIsLoaded: pageIsLoaded,
-            //customSetState: customSetState,
+            customSetState: customSetState,
           ),
         ),
         body: Column(
